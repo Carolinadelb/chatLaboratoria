@@ -2,7 +2,7 @@ function logInOrRegister(){
   const emailValue = email.value;
   const passwordValue = password.value;
 
-  firebase.auth().createUserWithEmailAndPassword()
+  firebase.auth().createUserWithEmailAndPassword(emailValue, passwordValue)
     .then(()=> {
       console.log("Usuario registrado");
     })
