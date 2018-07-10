@@ -12,13 +12,15 @@
   <h1>Chat Laboratoria</h1>
   <div id="loginContainer">
     <div id="loggedIn"></div>
-    <p id="username" ></p> <input id ="logOutButton" type="button" value="LOG OUT">
+    <p id="username" ></p> 
+    <input id ="logOutButton" onclick="logout()" type="button" value="LOG OUT">
   </div>
   <div id ="loggedOut">
     <input id="email" type="email">
     <input id="password" type="password">
     <input id="logInButton" onclick="logInOrRegister()" type="button" value="Register">
     <input id="login" onclick="login()" type="button" value="LOGIN">
+    <input id ="loginFacebook" onclick="loginFacebook()" type="button" value="Login FAcebook">
   </div>
 
 <!-- script FIREBASE -->
