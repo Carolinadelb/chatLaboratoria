@@ -12,6 +12,26 @@ window.onload = ()=>{
       loggedIn.style.display= "none";
     }
   });
+
+
+  firebase.database().ref('messages')
+   .limitToLast(1)
+   .once('value')
+   .then((messages)=>{
+     console.log("mensajes > " +JSON.stringidy(messages));
+  })
+  .catch(()=>{
+
+  });
+
+
+  firebase.database().ref('messages')
+    .on('child_added', (newMessage)=>{
+      messageContainer.innerHTML += `
+       <p>Nombre: ${newMessage.val().creatorName}</p>
+       <p>${newMessage.val().text}</p>
+      `
+    });
 }
 
 function logInOrRegister(){
@@ -63,5 +83,22 @@ function loginFacebook(){
   })
   .catch((error)=>{
     console.log("")
+  })
+}
+
+
+//firebase database
+// messsages/456578 
+
+function sendMessage(){
+  const currentUser = firebase.auth().currentUser;
+  const messageAreaText = messageArea.value;
+  //para tener uuna nuevsa llave en la coleccion messages
+  const newMessageKey = firebase.database().ref().child('messages').push().key;
+  
+  firebase.database().ref(`messages/${newMessageKey}`).set({
+    creator : currentUser.uid,
+    creatorName : currentUser.displayName,
+    text : messageAreaText
   })
 }

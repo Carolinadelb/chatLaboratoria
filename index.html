@@ -22,8 +22,16 @@
     <input id="login" onclick="login()" type="button" value="LOGIN">
     <input id ="loginFacebook" onclick="loginFacebook()" type="button" value="Login FAcebook">
   </div>
+  <div id="messageContainer">
+
+  </div>
+  <div>
+    <input id="messageArea" type="text">
+    <input type="button" id="sendButton" value="SEND" onclick="sendMessage()">
+  </div>
 
 <!-- script FIREBASE -->
+
 <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -37,6 +45,7 @@
   };
   firebase.initializeApp(config);
 </script>
+
   <script src="assets/js/app.js"></script>
 </body>
 </html>
